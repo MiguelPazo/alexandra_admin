@@ -1,34 +1,39 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
-Route::get('/', 'WelcomeController@index');
-
-Route::get('home', 'HomeController@index');
-
-Route::controllers([
-    'auth' => 'AuthController',
-    'pass' => 'Auth\PasswordController'
-]);
-
-Route::group([
-    'prefix' => 'admin',
-], function () {
-    Route::resource('process', 'ProcessController');
-    Route::get('process/{id}/elections/', 'ProcessController@getElections');
-    Route::resource('election', 'ElectionController');
+Route::get('/', function () {
+    return Redirect::to('auth/login');
 });
 
+Route::group([
+    'namespace' => 'Auth'
+], function () {
+    Route::controllers([
+        'auth' => 'AuthController',
+        'pass' => 'PasswordController'
+    ]);
+});
 
+Route::group([
+    'middleware' => 'auth'
+], function () {
+    Route::get('home', 'HomeController@index');
 
+    /**
+     * Section for PROCESS urls
+     */
+    Route::resource('process', 'ProcessController');
+    Route::get('process-list', [
+        'as' => 'process.list',
+        'uses' => 'ProcessController@showView'
+    ]);
+    Route::get('process/{id}/elections/',
+        [
+            'as' => 'process.elections',
+            'uses' => 'ProcessController@elections'
+        ]);
 
-
+    /**
+     * Section for ELECTIONS urls
+     */
+    Route::resource('election', 'ElectionController');
+});

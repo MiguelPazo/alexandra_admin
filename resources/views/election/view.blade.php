@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Procesos</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/process') }}"><--- Back</a>
+                        <a href="{{ url('/process') }}"><--- Back</a>
                         <table class="table table-striped">
                             <tr>
                                 <th>#</th>

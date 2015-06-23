@@ -8,9 +8,9 @@
                     <div class="panel-heading">Editar Proceso: {{ $oProcess->alias }}</div>
 
                     <div class="panel-body">
-                        {!! Form::model( $oProcess, ['route' => ['admin.process.update', $oProcess->id ], 'method' => 'PUT'
+                        {!! Form::model( $oProcess, ['route' => ['process.update', $oProcess->id ], 'method' => 'PUT'
                         ]) !!}
-                        @include('admin.process.partials.fields')
+                        @include('process.partials.fields')
                         <button type="submit" class="btn btn-default">Guardar Cambios</button>
                         {!! Form::close() !!}
                     </div>

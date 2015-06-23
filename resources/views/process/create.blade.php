@@ -8,8 +8,8 @@
                     <div class="panel-heading">Nuevo Proceso</div>
 
                     <div class="panel-body">
-                        {!! Form::open(['route' => 'admin.process.store', 'method' => 'POST' ]) !!}
-                        @include('admin.process.partials.fields')
+                        {!! Form::open(['route' => 'process.store', 'method' => 'POST' ]) !!}
+                        @include('process.partials.fields')
                         <button type="submit" class="btn btn-default">Registrar</button>
                         {!! Form::close() !!}
                     </div>

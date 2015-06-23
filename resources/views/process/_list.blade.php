@@ -1,19 +1,20 @@
 @extends('layout')
 
 @section('content')
-    <div class="container">
+    <div class="container" ng-controller="processController">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">Procesos</div>
-                    <p>Se han creado {{ $lstProcess->total() }} procesos en total</p>
 
                     <div class="panel-body">
                         <p>
-                            <a class="btn btn-info" href="{{ route('admin.process.create') }}" role="button">
+                            <a class="btn btn-info" href="{{ route('process.create') }}" role="button">
                                 Nuevo
                             </a>
                         </p>
+
+                        <p>Se han creado {{ $lstProcess->total() }} procesos en total</p>
                         <table class="table table-striped">
                             <tr>
                                 <th>#</th>
@@ -33,8 +34,8 @@
                                     <td>{{ $process->date_end }}</td>
                                     <td>{{ $process->status }}</td>
                                     <td>
-                                        <a href="{{ url('admin/process/' . $process->id .'/elections ') }}">Eleccion</a>
-                                        <a href="{{ route('admin.process.edit', $process->id) }}">Editar</a>
+                                        <a href="{{ route('process_list_elections' , $process->id) }}">Eleccion</a>
+                                        <a href="{{ route('process.edit', $process->id) }}">Editar</a>
                                         <a href="">Eliminar</a>
                                     </td>
                                 </tr>
@@ -46,4 +47,6 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('/js/app/services/processService.js') }}"></script>
+    <script src="{{ asset('/js/app/controllers/processController.js') }}"></script>
 @endsection

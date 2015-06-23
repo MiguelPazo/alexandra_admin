@@ -8,7 +8,7 @@
 				<div class="panel-heading">Panel de Control</div>
 
 				<div class="panel-body">
-                    <a href="{{ url('/admin/process') }}">Procesos ---></a>
+                    <a href="{{ route('process.list') }}">Procesos ---></a>
 				</div>
 			</div>
 		</div>

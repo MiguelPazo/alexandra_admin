@@ -8,6 +8,19 @@ use Illuminate\Support\Facades\Auth;
 
 class ProcessController extends Controller
 {
+
+    public function showView()
+    {
+        return view('process.view');
+    }
+
+    public function elections($idProcess)
+    {
+        $lstElection = Election::process($idProcess)->get();
+
+        return view('election.list', compact('lstElection'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,16 +28,10 @@ class ProcessController extends Controller
      */
     public function index()
     {
-        $lstProcess = Process::paginate(2);
+        $lstProcess = Process::orderBy('status', 'ASC')
+            ->orderBy('date_begin', 'DESC')->get();
 
-        return view('admin.process', compact('lstProcess'));
-    }
-
-    public function  getElections($idProcess)
-    {
-        $lstElection = Election::process($idProcess)->get();
-
-        return view('admin.election', compact('lstElection'));
+        return $lstProcess;
     }
 
     /**
@@ -34,7 +41,7 @@ class ProcessController extends Controller
      */
     public function create()
     {
-        return view('admin.process.create');
+        return view('process.create');
     }
 
     /**
@@ -48,7 +55,7 @@ class ProcessController extends Controller
         $oProcess->user_id = Auth::user()->id;
         $oProcess->save();
 
-        return redirect()->route('admin.process.index');
+        return redirect()->route('process.index');
     }
 
     /**
@@ -72,7 +79,7 @@ class ProcessController extends Controller
     {
         $oProcess = Process::findorFail($id);
 
-        return view('admin.process.edit', compact('oProcess'));
+        return view('process.edit', compact('oProcess'));
     }
 
     /**
@@ -88,7 +95,7 @@ class ProcessController extends Controller
 
         $oProcess->save();
 
-        return redirect()->route('admin.process.index');
+        return redirect()->route('process.index');
     }
 
     /**
