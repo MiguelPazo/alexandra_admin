@@ -6,7 +6,7 @@
 
     <div class="container" ng-controller="processController">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">Procesos</div>
 
@@ -23,25 +23,34 @@
                         <p>Se han creado 5 procesos en total</p>
                         <table class="table table-striped">
                             <tr>
-                                <th>#</th>
-                                <th>Alias</th>
-                                <th>Nombre del Proceso</th>
-                                <th>Fecha de Inicio</th>
-                                <th>Fecha de Fin</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
+                                <th ng-repeat="(i,th) in header" ng-click="changeSorting(th.field)"
+                                    ng-class="(th.field != null)? 'order': ''">
+                                    <span ng-show="selectedClm(th.field)" ng-class="selectedClass(th.field)"
+                                          class="glyphicon"></span>
+                                    [[ th.column ]]
+                                </th>
                             </tr>
-                            <tr ng-repeat="process in lstProcess | filter:processSearch">
-                                <td>[[ process.id ]]</td>
+                            <tr ng-repeat="process in lstProcess | filter:processSearch | orderBy:sort.field:sort.reverseSort track by $index">
+                                <td>[[ $index + 1 ]]</td>
                                 <td>[[ process.alias ]]</td>
                                 <td>[[ process.description ]]</td>
                                 <td>[[ process.date_begin ]]</td>
                                 <td>[[ process.date_end ]]</td>
-                                <td>[[ process.status ]]</td>
                                 <td>
-                                    <a href="">Eleccion</a>
-                                    <a href="">Editar</a>
-                                    <a href="">Eliminar</a>
+                                    <span ng-show="(process.status == 'active')? true:false"
+                                          class="btn-lg glyphicon glyphicon-ok-circle text-success">
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="">
+                                        <span class="glyphicon glyphicon-align-justify"></span>
+                                    </a>
+                                    <a href="" ng-click="proccessEdit(process.id)">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                    <a href="" popover-placement="bottom" popover="On the Bottom!" popover-trigger="focus" popover-title="¿Esta seguro?">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
                                 </td>
                             </tr>
                         </table>

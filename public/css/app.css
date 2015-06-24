@@ -1,0 +1,7 @@
+.table-striped tr th.order {
+    cursor: pointer;
+}
+
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}

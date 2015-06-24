@@ -7,16 +7,14 @@
     <title>Alexandra</title>
     <link rel="stylesheet" href="{{ asset('/js/libs/bootstrap/dist/css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('/js/libs/bootstrap/dist/css/bootstrap-theme.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('/css/admin/app.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <script>
-        var URLS = {
-            'process_list': '{{ route('process.index')  }}'
-        }
+        var BASE_URL = '{{ asset('')  }}';
     </script>
 
-    <script src="{{ asset('/js/libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('/js/libs/angular/angular.min.js') }}"></script>
+    <script src="{{ asset('/js/libs/angular-bootstrap/ui-bootstrap-tpls.min.js') }}"></script>
     <script src="{{ asset('/js/app/app.js') }}"></script>
 </head>
 <body>

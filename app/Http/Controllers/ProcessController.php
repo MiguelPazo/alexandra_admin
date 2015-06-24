@@ -28,8 +28,7 @@ class ProcessController extends Controller
      */
     public function index()
     {
-        $lstProcess = Process::orderBy('status', 'ASC')
-            ->orderBy('date_begin', 'DESC')->get();
+        $lstProcess = Process::orderBy('date_begin', 'DESC')->get();
 
         return $lstProcess;
     }

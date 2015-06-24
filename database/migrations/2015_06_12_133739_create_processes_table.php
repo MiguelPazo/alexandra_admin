@@ -20,7 +20,7 @@ class CreateProcessesTable extends Migration
             $table->string('alias', 30);
             $table->date('date_begin');
             $table->date('date_end');
-            $table->enum('status', ['active','inactive'])->default('active');
+            $table->enum('status', ['active','inactive','trash'])->default('active');
             $table->integer('user_id')->unsigned();
 
             $table->foreign('user_id')
