@@ -13,31 +13,32 @@
         var BASE_URL = '{{ asset('')  }}';
     </script>
 
+    <script src="{{ asset('/js/libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('/js/libs/angular/angular.min.js') }}"></script>
     <script src="{{ asset('/js/libs/angular-bootstrap/ui-bootstrap-tpls.min.js') }}"></script>
+    <script src="{{ asset('/js/libs/angular-route/angular-route.min.js') }}"></script>
     <script src="{{ asset('/js/app/app.js') }}"></script>
+
 </head>
 <body>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                @if (!Auth::guest())
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('auth/logout') }}">(Salir)</a>
-                    </li>
-                @endif
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        {{--{{ Auth::user()->name }}--}}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('auth/logout') }}">(Salir)</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
-@yield('content')
+<div ng-view></div>
 
 </body>
 </html>

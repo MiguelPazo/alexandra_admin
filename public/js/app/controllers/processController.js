@@ -1,41 +1,53 @@
-appAlexandra.controller('processController', function ($scope, processService) {
+appAlexandra.registerCtrl('processController', function ($scope, $window) {
     $scope.lstProcess = null;
-
+    $scope.lstElections = null;
+    $scope.active = null;
     $scope.header = {
         0: {
             field: null,
-            column: '#'
+            column: '#',
+            class: 'col_1'
         },
         1: {
             field: 'alias',
-            column: 'Alias'
+            column: 'Alias',
+            class: 'col_2'
         },
         2: {
             field: 'description',
-            column: 'Nombre del Proceso'
+            column: 'Proceso',
+            class: 'col_3'
         },
         3: {
             field: 'date_begin',
-            column: 'Fecha de Inicio'
+            column: 'Fecha de Inicio',
+            class: 'col_4'
         },
         4: {
             field: 'date_end',
-            column: 'Fecha de Fin'
+            column: 'Fecha de Fin',
+            class: 'col_5'
         },
         5: {
-            field: 'status',
-            column: 'Estado'
-        },
-        6: {
             field: null,
-            column: 'Acciones'
+            column: 'Acciones',
+            class: 'col_6'
         }
     };
-
     $scope.sort = {
         field: 'date_begin',
         reverseSort: true
     };
+
+    $scope.getColumnClass = function (column) {
+        cssClass = column.class;
+
+        if (column.field != null) {
+            cssClass += ' point_cursor';
+        }
+
+        return cssClass;
+    }
 
     $scope.changeSorting = function (field) {
         if (field != null) {
@@ -47,6 +59,10 @@ appAlexandra.controller('processController', function ($scope, processService) {
                 sort.reverseSort = false;
             }
         }
+    };
+
+    $scope.getElections = function (id) {
+        $scope.active = id;
     };
 
     $scope.selectedClm = function (field) {
@@ -86,6 +102,21 @@ appAlexandra.controller('processController', function ($scope, processService) {
             $scope.lstProcess = response;
         });
     };
+
+    $scope.getElections = function (id) {
+        if ($scope.active != id) {
+            processService.getElections(id, function (response) {
+                $scope.lstElections = response;
+                $scope.active = id;
+            });
+        } else {
+            $scope.active = null;
+        }
+    };
+
+    $scope.config = function (id) {
+        $window.location = URLS.process_config(id);
+    }
 
     $scope.listProcesses();
 });

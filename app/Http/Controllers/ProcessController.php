@@ -16,9 +16,11 @@ class ProcessController extends Controller
 
     public function elections($idProcess)
     {
-        $lstElection = Election::process($idProcess)->get();
+        $lstElection = Election::process($idProcess)
+            ->orderBy('date', 'DESC')
+            ->get();
 
-        return view('election.list', compact('lstElection'));
+        return $lstElection;
     }
 
     /**
@@ -65,7 +67,9 @@ class ProcessController extends Controller
      */
     public function show($id)
     {
-        //
+        $oProcess = Process::findorFail($id);
+
+        return $oProcess;
     }
 
     /**
@@ -74,11 +78,13 @@ class ProcessController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function edit($id)
+    public function config($id)
     {
-        $oProcess = Process::findorFail($id);
+//        $oProcess = Process::findorFail($id);
+//
+//        return view('process.config', compact('oProcess'));
 
-        return view('process.edit', compact('oProcess'));
+        return view('process.config');
     }
 
     /**
