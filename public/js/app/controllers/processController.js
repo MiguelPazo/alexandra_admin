@@ -1,53 +1,46 @@
-appAlexandra.registerCtrl('processController', function ($scope, $window) {
+appAlexandra.controller('processController', function ($scope, $window, processService) {
     $scope.lstProcess = null;
-    $scope.lstElections = null;
-    $scope.active = null;
+    $scope.popover = {
+        'title': '¿Esta seguro?',
+        'content': 'hola mudno',
+        'template': 'ppDelete'
+    };
+
     $scope.header = {
         0: {
             field: null,
-            column: '#',
-            class: 'col_1'
+            column: '#'
         },
         1: {
             field: 'alias',
-            column: 'Alias',
-            class: 'col_2'
+            column: 'Alias'
         },
         2: {
             field: 'description',
-            column: 'Proceso',
-            class: 'col_3'
+            column: 'Nombre del Proceso'
         },
         3: {
             field: 'date_begin',
-            column: 'Fecha de Inicio',
-            class: 'col_4'
+            column: 'Fecha de Inicio'
         },
         4: {
             field: 'date_end',
-            column: 'Fecha de Fin',
-            class: 'col_5'
+            column: 'Fecha de Fin'
         },
         5: {
+            field: 'status',
+            column: 'Estado'
+        },
+        6: {
             field: null,
-            column: 'Acciones',
-            class: 'col_6'
+            column: 'Acciones'
         }
     };
+
     $scope.sort = {
         field: 'date_begin',
         reverseSort: true
     };
-
-    $scope.getColumnClass = function (column) {
-        cssClass = column.class;
-
-        if (column.field != null) {
-            cssClass += ' point_cursor';
-        }
-
-        return cssClass;
-    }
 
     $scope.changeSorting = function (field) {
         if (field != null) {
@@ -61,10 +54,6 @@ appAlexandra.registerCtrl('processController', function ($scope, $window) {
         }
     };
 
-    $scope.getElections = function (id) {
-        $scope.active = id;
-    };
-
     $scope.selectedClm = function (field) {
         if (field != null) {
             if ($scope.sort.field == field) {
@@ -75,6 +64,10 @@ appAlexandra.registerCtrl('processController', function ($scope, $window) {
         } else {
             return false;
         }
+    };
+
+    $scope.deleteLink = function () {
+        alert('hola');
     };
 
     $scope.selectedClass = function (field) {
@@ -93,8 +86,12 @@ appAlexandra.registerCtrl('processController', function ($scope, $window) {
         }
     };
 
-    $scope.proccessEdit = function (id) {
+    $scope.getElections = function (id) {
+        $window.location.href = URLS.process_elections(id);
+    }
 
+    $scope.proccessEdit = function (id) {
+        $window.location.href = URLS.process_edit(id);
     };
 
     $scope.listProcesses = function () {
@@ -102,21 +99,6 @@ appAlexandra.registerCtrl('processController', function ($scope, $window) {
             $scope.lstProcess = response;
         });
     };
-
-    $scope.getElections = function (id) {
-        if ($scope.active != id) {
-            processService.getElections(id, function (response) {
-                $scope.lstElections = response;
-                $scope.active = id;
-            });
-        } else {
-            $scope.active = null;
-        }
-    };
-
-    $scope.config = function (id) {
-        $window.location = URLS.process_config(id);
-    }
 
     $scope.listProcesses();
 });

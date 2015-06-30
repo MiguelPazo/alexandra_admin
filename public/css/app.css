@@ -1,4 +1,4 @@
-.point_cursor {
+.table-striped tr th.order {
     cursor: pointer;
 }
 
@@ -6,66 +6,7 @@
     cursor: pointer;
 }
 
-.tab_row_active {
-    background-color: #6dff5e;
-}
-
-.tab_row_odd {
-    background-color: #f3f4f4;
-}
-
-.tab_body .tab_row {
-    cursor: pointer;
-}
-
-.container_tab_process .row_detail {
-    margin: 0;
-    padding: 0 10px;
-    width: 100%;
-}
-
-.container_tab_process .tab_header {
-    background: #f9f9f9 none repeat scroll 0 0;
-    font-weight: bold;
-}
-
-.container_tab_process .column_order {
-    width: 20px;
-}
-
-.container_tab_process .tab_row {
-    border-top: 1px solid #ddd;
-    display: inline-flex;
-    padding: 10px 0;
-    width: 100%;
-}
-
-.container_tab_process .tab_row div {
-    padding: 0 10px;
-    word-wrap: break-word;
-}
-
-.container_tab_process .tab_row .col_1 {
-    text-align: center;
-    width: 4%;
-}
-
-.container_tab_process .tab_row .col_2 {
-    width: 10%;
-}
-
-.container_tab_process .tab_row .col_3 {
-    width: 55%;
-}
-
-.container_tab_process .tab_row .col_4 {
-    width: 14%;
-}
-
-.container_tab_process .tab_row .col_5 {
-    width: 12%;
-}
-
-.container_tab_process .tab_row .col_6 {
-    width: 8%;
+.popover_delete {
+    margin-bottom: 0px;
+    width: 164px;
 }
