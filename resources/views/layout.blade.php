@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" ng-app="alexandra">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,11 +13,7 @@
         var BASE_URL = '{{ asset('')  }}';
     </script>
 
-    <script src="{{ asset('/js/libs/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('/js/libs/angular/angular.min.js') }}"></script>
-    <script src="{{ asset('/js/libs/angular-bootstrap/ui-bootstrap-tpls.min.js') }}"></script>
-    <script src="{{ asset('/js/libs/angular-route/angular-route.min.js') }}"></script>
-    <script src="{{ asset('/js/app/app.js') }}"></script>
+    <script src="{{ asset('/js/libs/requirejs/require.js') }}" data-main="{{ asset('/js/app/main.js') }}"></script>
 
 </head>
 <body>
