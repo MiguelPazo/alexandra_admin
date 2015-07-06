@@ -1,20 +1,20 @@
 define([
-    'angular',
-    'ui-bootstrap',
-    'angular-route',
-    'processController',
-    'processService'
-], function (ng) {
-    'use strict';
+    'angularAMD',
+    //'processController',
+    'angular-ui-router'
+], function (angularAMD) {
 
-    return ng.module('app', [
-        'app.controllers',
-        'app.services',
-        'ngRoute'
-    ]);
+    var app = angular.module('appAlexandra', ['ui.router']);
 
-    //angular.bootstrap(document, ['app']);
+    //app.controller('processController', processController);
+
+    app.config(function ($stateProvider, $urlRouterProvider) {
+        $stateProvider.state('home', angularAMD.route({
+            url: '/',
+            templateUrl: 'view/process.view',
+            controller: 'processController',
+            controllerUrl: '/js/app/controllers/processController.js',
+            navTab: 'home'
+        }));
+    });
 });
-
-
-

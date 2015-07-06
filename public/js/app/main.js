@@ -5,10 +5,13 @@ require.config({
         'angular-route': '/js/libs/angular-route/angular-route.min',
         'ui-bootstrap': '/js/libs/angular-bootstrap/ui-bootstrap-tpls.min',
         'domReady': '/js/libs/requirejs-domready/domReady',
+        'angularAMD': '/js/libs/angularAMD/angularAMD.min',
+        'ngload': '/js/libs/angularAMD/ngload.min',
+        'angular-ui-router': '/js/libs/angular-ui-router/release/angular-ui-router.min',
         //App
         'bootstrap': '/js/app/bootstrap',
         'app': '/js/app/app',
-        'routes': '/js/app/routes',
+        //'routes': '/js/app/routes1',
         //Controllers
         'processController': '/js/app/controllers/processController',
         //Services
@@ -24,6 +27,12 @@ require.config({
         'angular': {
             exports: 'angular'
         },
+        'angular-ui-router': {
+            deps: ['angular']
+        },
+        'angularAMD': {
+            deps: ['angular']
+        },
         'ui-bootstrap': {
             deps: ['angular']
         },
@@ -31,5 +40,5 @@ require.config({
             deps: ['angular']
         }
     },
-    deps: ['bootstrap']
+    deps: ['app']
 });
