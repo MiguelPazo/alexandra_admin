@@ -13,4 +13,9 @@ class Election extends Model
         $query->where('process_id', $idProcess);
     }
 
+//    public function scopeStatus($query, $status)
+    {
+        $query->where('status', $status);
+    }
+
 }

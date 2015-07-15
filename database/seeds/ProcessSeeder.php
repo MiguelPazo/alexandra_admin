@@ -13,6 +13,7 @@ class ProcessSeeder extends Seeder
     public function run()
     {
         Ale\Process::truncate();
+        \Ale\Election::truncate();
 
         $proc1 = Ale\Process::create([
             'description' => 'ELECCIONES REGIONALES DE PRESIDENTES Y VICEPRESIDENTES 2010 - SEGUNDA ELECCION',
@@ -90,8 +91,29 @@ class ProcessSeeder extends Seeder
         ]);
 
         Ale\Election::create([
-            'description' => 'ELECCIONES DEL COLEGIO DE ABOGADOS DE LIMA',
-            'alias' => 'CAL',
+            'description' => 'ELECCIÓN DE PRESIDENTE',
+            'alias' => 'CAL1',
+            'count_votes' => '1',
+            'date' => '2015-11-05',
+            'process_id' => $proc4->id
+        ]);
+        Ale\Election::create([
+            'description' => 'ELECCIÓN DE SECRETARIO',
+            'alias' => 'CAL2',
+            'count_votes' => '1',
+            'date' => '2015-11-05',
+            'process_id' => $proc4->id
+        ]);
+        Ale\Election::create([
+            'description' => 'ELECCIÓN DE TERCER MIEMBRO',
+            'alias' => 'CAL3',
+            'count_votes' => '1',
+            'date' => '2015-11-05',
+            'process_id' => $proc4->id
+        ]);
+        Ale\Election::create([
+            'description' => 'ELECCIÓN DE CUARTO MIEMBRO',
+            'alias' => 'CAL4',
             'count_votes' => '1',
             'date' => '2015-11-05',
             'process_id' => $proc4->id

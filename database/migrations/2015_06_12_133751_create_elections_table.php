@@ -19,6 +19,7 @@ class CreateElectionsTable extends Migration
             $table->string('description_short', 80)->nullable();
             $table->string('alias', 30)->nullable();
             $table->tinyInteger('count_votes', false, true)->default(1);
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->date('date');
             $table->integer('process_id')->unsigned();
 
