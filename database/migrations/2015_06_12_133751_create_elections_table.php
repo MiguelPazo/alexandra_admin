@@ -15,17 +15,12 @@ class CreateElectionsTable extends Migration
     {
         Schema::create('elections', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description', 80);
-            $table->string('description_short', 80)->nullable();
+            $table->string('code', 2);
+            $table->string('description', 100);
+            $table->string('description_short', 50)->nullable();
             $table->string('alias', 30)->nullable();
-            $table->tinyInteger('count_votes', false, true)->default(1);
-            $table->date('date');
-            $table->integer('process_id')->unsigned();
-
-            $table->foreign('process_id')
-                ->references('id')
-                ->on('processes')
-                ->onDelete('cascade');
+            $table->tinyInteger('count_votes_avalible', false, true)->default(1);
+            $table->enum('status', ['active', 'inactive'])->default('active');
         });
     }
 
