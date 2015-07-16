@@ -1,5 +1,5 @@
 {
-  "name": "alexandra_view",
+  "name": "alexandra_admin",
   "version": "0.0.0",
   "authors": [
     "Miguel Rodrigo Pazo Sanchez <miguel.ps19@gmail.com>"
@@ -20,7 +20,7 @@
     "angular-route": "1.4.1",
     "requirejs": "2.1.18",
     "requirejs-domready": "2.0.1",
-    "angularAMD": "~0.2.1",
-    "angular-ui-router": "~0.2.15"
+    "angularAMD": "0.2.1",
+    "angular-ui-router": "0.2.15"
   }
 }
