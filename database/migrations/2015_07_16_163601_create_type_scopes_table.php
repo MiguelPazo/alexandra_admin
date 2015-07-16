@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTypeAgrupolsTable extends Migration
+class CreateTypeScopesTable extends Migration
 {
 
     /**
@@ -13,9 +13,10 @@ class CreateTypeAgrupolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_agrupols', function (Blueprint $table) {
+        Schema::create('type_scopes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description', 80);
+            $table->string('description', 100);
+            $table->string('alias', 100)->nullable();
         });
     }
 
@@ -26,7 +27,7 @@ class CreateTypeAgrupolsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('type_agrupols');
+        Schema::drop('type_scopes');
     }
 
 }

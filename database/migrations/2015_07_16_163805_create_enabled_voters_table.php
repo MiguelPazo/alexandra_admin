@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProcessesTable extends Migration
+class CreateEnabledVotersTable extends Migration
 {
 
     /**
@@ -13,20 +13,22 @@ class CreateProcessesTable extends Migration
      */
     public function up()
     {
-        Schema::create('processes', function (Blueprint $table) {
+        Schema::create('enabled_voters', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description', 80);
-            $table->string('description_short', 50)->nullable();
-            $table->string('alias', 30);
-            $table->date('date_begin');
-            $table->date('date_end');
-            $table->enum('status', ['active', 'inactive', 'final'])->default('active');
+            $table->dateTime('date');
+            $table->integer('voter_id')->unsigned();
             $table->integer('user_id')->unsigned();
 
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+
+            $table->foreign('voter_id')
+                ->references('id')
+                ->on('voters')
+                ->onDelete('cascade');
+
         });
     }
 
@@ -37,7 +39,7 @@ class CreateProcessesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('processes');
+        Schema::drop('enabled_voters');
     }
 
 }

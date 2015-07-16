@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAgrupolsTable extends Migration
+class CreateVotesTable extends Migration
 {
 
     /**
@@ -13,15 +13,15 @@ class CreateAgrupolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('agrupols', function (Blueprint $table) {
+        Schema::create('votes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code', 8);
-            $table->string('description', 80);
-            $table->integer('type_agrupol_id')->unsigned();
+            $table->string('vote', 3000);
+            $table->integer('scope_charter')->unsigned();
+            $table->integer('election_id')->unsigned();
 
-            $table->foreign('type_agrupol_id')
+            $table->foreign('election_id')
                 ->references('id')
-                ->on('type_agrupols')
+                ->on('elections')
                 ->onDelete('cascade');
         });
     }
@@ -33,7 +33,7 @@ class CreateAgrupolsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('agrupols');
+        Schema::drop('votes');
     }
 
 }

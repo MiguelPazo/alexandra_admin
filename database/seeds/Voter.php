@@ -23,7 +23,7 @@ class VoterSeeder extends Seeder
 
         Ale\Voter::truncate();
 
-        foreach (range(1, 2000) as $value) {
+        foreach (range(1, 10) as $value) {
             $userName = $faker->userName;
             $order = array_rand(['male', 'female'], 1);
             $name = ($order == 0) ? $faker->firstNameMale : $faker->firstNameFemale;
@@ -34,16 +34,12 @@ class VoterSeeder extends Seeder
                 'lastname_first' => $faker->lastName,
                 'lastname_second' => $faker->lastName,
                 'pin' => $faker->randomNumber(6),
-                'status' => 'pending',
                 'birthdate' => $faker->date($format = 'Y-m-d', $max = '-20 years'),
                 'gender' => $arrGender[$order],
                 'address' => $faker->address,
                 'phone' => $faker->randomNumber(7),
                 'cellphone' => $faker->randomNumber(9),
                 'email' => $faker->email,
-                'twitter' => 'https://twitter.com/' . $userName,
-                'facebook' => 'https://www.facebook.com/' . $userName,
-                'process_id' => $idProcess
             ]);
         }
     }
