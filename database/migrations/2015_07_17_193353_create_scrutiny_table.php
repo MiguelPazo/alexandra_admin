@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAgrupolsTable extends Migration
+class CreateScrutinyTable extends Migration
 {
 
     /**
@@ -13,10 +13,13 @@ class CreateAgrupolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('agrupols', function (Blueprint $table) {
+        Schema::create('scrutiny', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code', 8);
-            $table->string('description', 100);
+            $table->integer('order');
+            $table->integer('scope_id')->unsigned();
+            $table->integer('organization_id')->unsigned();
+            $table->integer('votes');
         });
     }
 
@@ -27,7 +30,7 @@ class CreateAgrupolsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('agrupols');
+        Schema::drop('scrutiny');
     }
 
 }

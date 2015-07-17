@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateScopeAgrupolsTable extends Migration
+class CreateScopeOrganizationsTable extends Migration
 {
 
     /**
@@ -13,22 +13,28 @@ class CreateScopeAgrupolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('scope_agrupols', function (Blueprint $table) {
+        Schema::create('scope_organizations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code', 8);
             $table->integer('order');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->integer('scope_id')->unsigned();
-            $table->integer('agrupol_id')->unsigned();
+            $table->integer('organization_id')->unsigned();
+            $table->integer('election_id')->unsigned();
 
             $table->foreign('scope_id')
                 ->references('id')
                 ->on('scopes')
                 ->onDelete('cascade');
 
-            $table->foreign('agrupol_id')
+            $table->foreign('organization_id')
                 ->references('id')
-                ->on('agrupols')
+                ->on('organizations')
+                ->onDelete('cascade');
+
+            $table->foreign('election_id')
+                ->references('id')
+                ->on('elections')
                 ->onDelete('cascade');
         });
     }
@@ -40,6 +46,6 @@ class CreateScopeAgrupolsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('scope_agrupols');
+        Schema::drop('scope_organizations');
     }
 }
