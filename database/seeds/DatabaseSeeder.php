@@ -17,9 +17,10 @@ class DatabaseSeeder extends Seeder
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-        $this->call('UserSeeder');
         $this->call('ProcessSeeder');
+        $this->call('UserSeeder');
         $this->call('VoterSeeder');
+        $this->call('OrganizationSeeder');
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }

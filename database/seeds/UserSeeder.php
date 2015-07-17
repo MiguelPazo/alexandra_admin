@@ -21,8 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'me@miguelpazo.com',
             'password' => \Hash::make('123'),
             'name' => 'Miguel',
-            'lastname_first' => 'Pazo',
-            'lastname_second' => 'Sánchez',
+            'lastname' => 'Pazo Sánchez',
             'type' => 'admin',
             'last_login' => $faker->date('Y-m-d H:i:s')
         ]);
@@ -32,8 +31,7 @@ class UserSeeder extends Seeder
                 'email' => $faker->unique()->email,
                 'password' => \Hash::make('123'),
                 'name' => $faker->name,
-                'lastname_first' => $faker->lastName,
-                'lastname_second' => $faker->lastName,
+                'lastname' => $faker->lastName,
                 'type' => 'operator',
                 'last_login' => $faker->dateTimeBetween('-45 years', '-15 years')
                     ->format('Y-m-d H:i:s')
