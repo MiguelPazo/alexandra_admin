@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateScrutinyTable extends Migration
+class CreateScrutinysTable extends Migration
 {
 
     /**
@@ -13,7 +13,7 @@ class CreateScrutinyTable extends Migration
      */
     public function up()
     {
-        Schema::create('scrutiny', function (Blueprint $table) {
+        Schema::create('scrutinys', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code', 8);
             $table->integer('order');
@@ -30,7 +30,7 @@ class CreateScrutinyTable extends Migration
      */
     public function down()
     {
-        Schema::drop('scrutiny');
+        Schema::drop('scrutinys');
     }
 
 }
