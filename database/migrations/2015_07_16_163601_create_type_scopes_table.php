@@ -17,7 +17,7 @@ class CreateTypeScopesTable extends Migration
             $table->increments('id');
             $table->string('description', 100);
             $table->string('alias', 100)->nullable();
-            $table->enum('type', ['agrupols', 'voters'])->nullable();
+            $table->enum('type', ['organizations', 'voters'])->nullable();
         });
     }
 

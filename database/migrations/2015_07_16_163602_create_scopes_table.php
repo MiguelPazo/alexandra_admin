@@ -17,7 +17,7 @@ class CreateScopesTable extends Migration
             $table->increments('id');
             $table->string('code', 8);
             $table->string('description', 100);
-            $table->integer('scope_parent')->unsigned();
+            $table->integer('scope_parent')->unsigned()->nullable();
             $table->integer('type_scope_id')->unsigned();
 
             $table->foreign('scope_parent')
