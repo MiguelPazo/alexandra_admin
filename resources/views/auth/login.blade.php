@@ -8,7 +8,7 @@
                     <div class="panel-heading">Ingreso al Sistema</div>
 
                     <div class="panel-body">
-                        {!! Form::open(['to' => 'auth/login', 'method' => 'POST' ]) !!}
+                        {!! Form::open(['url' => 'auth/login', 'method' => 'POST' ]) !!}
                         <div class="form-group">
                             {!! Form::label('email', 'E-mail:') !!}
                             {!! Form::email('email', null, ['class' => 'form-control']) !!}

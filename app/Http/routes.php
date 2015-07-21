@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return Redirect::to('auth/login');
+    return View::make('auth.login');
 });
 
 Route::group([
